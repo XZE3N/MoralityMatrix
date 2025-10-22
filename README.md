@@ -142,6 +142,34 @@ Then open:
 
 ---
 
+### 🌱 Database Seeding (Optional)
+
+To prepopulate the database with sample **quiz questions and answer options**, two SQL scripts are included in the repository under:
+
+```
+Database/
+ └── Seeds/
+     ├── Questions.sql
+     └── Options.sql
+```
+
+#### 🧩 How to Use
+
+1. Open **SQL Server Management Studio (SSMS)** and connect to your local SQL Server instance.  
+2. Ensure that the database specified in your `appsettings.json` (usually `MoralityMatrixDB`) exists.  
+3. Open the scripts in this order:
+   - `Questions.sql`
+   - `Options.sql`
+4. Execute each script (F5 or the “Run” button) to insert initial quiz data.  
+5. Verify the data by running:
+   ```sql
+   SELECT COUNT(*) FROM Questions;
+   SELECT COUNT(*) FROM Options;
+   ```
+   You should see several rows of seed data successfully inserted.
+
+---
+
 ## 🧑‍🏫 Roles Overview
 
 | Role | Description |
