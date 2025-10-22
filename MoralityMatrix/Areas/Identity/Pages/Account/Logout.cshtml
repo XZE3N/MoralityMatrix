@@ -1,0 +1,30 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Deconectare";
+}
+
+<header>
+    <h1>@ViewData["Title"]</h1>
+    @{
+        if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Apasă aici pentru a te deconecta!</button>
+            </form>
+        }
+        else
+        {
+            <p>Te-ai deconectat cu succes!</p>
+        }
+    }
+</header>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".active").removeClass("active");
+            $("#logout").addClass("active");
+        });
+    </script>
+}

@@ -1,0 +1,25 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column flex-md-row col-12 col-md-auto">
+    
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.QuestionsNavClass(ViewContext)" id="questions" asp-page="./Questions">Întrebări</a></li>
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.AddQuestionsNavClass(ViewContext)" id="add-questions" asp-page="./AddQuestions">Adaugă Întrebări</a></li>
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Parolă</a></li>
+    }
+    else
+    {
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profil</a></li>
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Parolă</a></li>
+        @if (hasExternalLogins)
+        {
+            <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link link-phthalo-green @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">Autentificări externe</a></li>
+        }
+        <li class="nav-item"><a class="nav-link link-phthalo-green @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Date personale</a></li>
+    }
+</ul>

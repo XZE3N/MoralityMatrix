@@ -1,0 +1,90 @@
+﻿@page
+@model MoralityMatrix.Areas.Identity.Pages.Account.Manage.QuestionsModel
+@{
+    ViewData["Title"] = "Întrebări";
+    ViewData["ActivePage"] = ManageNavPages.Questions;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="container">
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <p class="lead">Selectează un capitol pentru a vizualiza întrebările.</p>
+        <form method="post" id="chapterForm">
+            <div class="dropdown mb-3">
+                <button class="btn w-100 btn-phthalo-green btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                    Selectează capitolul
+                </button>
+                <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                    <li><button class="dropdown-item" onclick="selectOption(0)">Toate capitolele</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(1)">Binele ca valoare supremă</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(2)">Morala poate fi demonstrată</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(3)">Morala ca „negare a vieţii</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(4)">Adevărul şi fericirea</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(5)">Virtutea</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(6)">Cunoașterea</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(7)">Viaţa conformă virtuţii</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(8)">Fericire şi credinţă</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(9)">Creştinismul şi valorile vieţii</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(10)">Etica aplicată</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(11)">Cinismul</button></li>
+                    <li><button class="dropdown-item" onclick="selectOption(12)">Eutanasia</button></li>
+                </ul>
+            </div>
+            <input type="hidden" asp-for="Input.Chapter" id="selectedOption" />
+            <input type="hidden" name="formType" value="form1" />
+        </form>
+        <form method="post" id="questionsForm">
+            <div class="accordion overflow-auto" id="accordionExample">
+                @for (int i = 0; i < Model.Questions.Count; i++)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="@Model.Heading(i)">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#@Model.Collapse(i)" aria-expanded="false" aria-controls="@Model.Collapse(i)">
+                                @Model.Questions[i].QuestionId . @Model.Questions[i].QuestionText
+                            </button>
+                        </h2>
+                        <div id="@Model.Collapse(i)" class="accordion-collapse collapse" aria-labelledby="@Model.Heading(i)" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @for (int j = 0; j < Model.Questions[i].Options.Count; j++)
+                                {
+                                    if (Model.Questions[i].CorrectOptionIndex == j)
+                                    {
+                                        <div class="alert alert-success" role="alert">
+                                            @Model.Questions[i].Options[j]
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-light" role="alert">
+                                            @Model.Questions[i].Options[j]
+                                        </div>
+                                    }
+                                }
+                                <button type="button" onclick="deleteQuestion(@Model.Questions[i].QuestionId)" class="btn w-100 btn-phthalo-green my-3">Șterge Întrebarea</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <input type="hidden" asp-for="Input.QuestionId" id="questionId" />
+            <input type="hidden" name="formType" value="form2" />
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function deleteQuestion(optionIndex) {
+            document.getElementById('questionId').value = optionIndex;
+            document.getElementById('questionsForm').submit();
+        }
+    </script>
+    <script>
+        function selectOption(optionIndex) {
+            document.getElementById('selectedOption').value = optionIndex;
+            document.getElementById('chapterForm').submit();
+        }
+    </script>
+}

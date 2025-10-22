@@ -1,0 +1,914 @@
+﻿@page
+@model MoralityMatrix.Pages.GuideModel
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Ghid";
+}
+
+<div class="offcanvas offcanvas-start bg-light-green" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasLabel">Navigare</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            Navighează pe diferite secțiuni ale paginii.
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-phthalo-green w-100 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                Selectează
+            </button>
+            <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#item-1">Introducere</a></li>
+                <li><a class="dropdown-item" href="#item-2-1">Binele ca valoare supremă</a></li>
+                <li><a class="dropdown-item" href="#item-2-2">Morala poate fi demonstrată</a></li>
+                <li><a class="dropdown-item" href="#item-2-3">Morala ca „negare a vieţii</a></li>
+                <li><a class="dropdown-item" href="#item-2-4">Adevărul şi fericirea</a></li>
+                <li><a class="dropdown-item" href="#item-3-1">Virtutea</a></li>
+                <li><a class="dropdown-item" href="#item-3-2">Cunoașterea</a></li>
+                <li><a class="dropdown-item" href="#item-3-3">Viaţa conformă virtuţii</a></li>
+                <li><a class="dropdown-item" href="#item-4-1">Fericire şi credinţă</a></li>
+                <li><a class="dropdown-item" href="#item-4-2">Creştinismul şi valorile vieţii</a></li>
+                <li><a class="dropdown-item" href="#item-5-1">Probleme de etică aplicată</a></li>
+                <li><a class="dropdown-item" href="#item-5-2">Etica aplicată</a></li>
+                <li><a class="dropdown-item" href="#item-5-3">Cinismul</a></li>
+                <li><a class="dropdown-item" href="#item-5-4">Eutanasia</a></li>
+                <li><a class="dropdown-item" href="#item-6">Încheiere</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="section-full-vh row container-custom">
+    <!-- Side Bar-->
+    <div class="sticky-top col-3 d-none d-sm-block bg-phthalo-green sidenav">
+        <div class="container pe-3">
+            <div class="d-flex justify-content-center align-content-center text-white">
+                <h5 class="m-0 mt-3">Pe această pagină</h5>
+            </div>
+            <hr class="text-white" />
+            <div class="d-flex justify-content-end pe-3">
+                <nav class="text-white" id="sidebar-nav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link link-light" href="#item-1"><span class="sidenav-link rounded p-2 px-3">Introducere</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light" data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2"><span class="sidenav-link rounded p-2 px-3"><span class="badge bg-light text-dark me-1">1</span> Binele</span></a>
+                            <div class="collapse" id="collapse2">
+                                <ul class="navbar-nav ps-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-2-1"><span class="sidenav-link rounded p-2 px-3">Binele ca valoare supremă</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-2-2"><span class="sidenav-link rounded p-2 px-3">Morala poate fi demonstrată</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-2-3"><span class="sidenav-link rounded p-2 px-3">Morala ca „negare a vieţii</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-2-4"><span class="sidenav-link rounded p-2 px-3">Adevărul şi fericirea</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light lh-lg" data-bs-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3"><span class="sidenav-link rounded p-2 px-3"><span class="badge bg-light text-dark me-1">2</span> Virtutea</span></a>
+                            <div class="collapse" id="collapse3">
+                                <ul class="navbar-nav ps-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-3-1"><span class="sidenav-link rounded p-2 px-3">Virtutea</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-3-2"><span class="sidenav-link rounded p-2 px-3">Cunoașterea</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-3-3"><span class="sidenav-link rounded p-2 px-3">Viaţa conformă virtuţii</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light" data-bs-toggle="collapse" href="#collapse4" role="button" aria-expanded="false" aria-controls="collapse4"><span class="sidenav-link rounded p-2 px-3"><span class="badge bg-light text-dark me-1">3</span> Moralitatea și credința</span></a>
+                            <div class="collapse" id="collapse4">
+                                <ul class="navbar-nav ps-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light" href="#item-4-1"><span class="sidenav-link rounded p-2 px-3">Fericire şi credinţă</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light" href="#item-4-2"><span class="sidenav-link rounded p-2 px-3">Creştinismul şi valorile vieţii</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light lh-lg" data-bs-toggle="collapse" href="#collapse5" role="button" aria-expanded="false" aria-controls="collapse5"><span class="sidenav-link rounded p-2 px-3"><span class="badge bg-light text-dark me-1">4</span> Probleme de etică aplicată</span></a>
+                            <div class="collapse" id="collapse5">
+                                <ul class="navbar-nav ps-4">
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-5-1"><span class="sidenav-link rounded p-2 px-3">Introducere</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-5-2"><span class="sidenav-link rounded p-2 px-3">Etica aplicată</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-5-3"><span class="sidenav-link rounded p-2 px-3">Cinismul</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link link-light lh-lg" href="#item-5-4"><span class="sidenav-link rounded p-2 px-3">Eutanasia</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-light lh-lg" href="#item-6"><span class="sidenav-link rounded p-2 px-3">Încheiere</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Main content-->
+    <div class="col container mt-0 mt-md-3">
+        <div class="row text-center justify-content-center container-custom">
+            <div class="container col-md-4 pt-4">
+                <div class="container">
+                    <img class="img-fluid" src="@Url.Content("~/images/png/logo-no-background.png")" />
+                </div>
+            </div>
+            <hr class="my-4" id="item-1" />
+            <h1 class="display-6 mb-2">Bun venit la Ghidul Moralității!</h1>
+            <p class="my-2 lead">Aici poți găsi toate resursele necesare pentru a-ți începe călătoria în domeniul filozofiei și a eticii.</p>
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <a class="btn btn-lg w-75 btn-outline-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">Navighează</a>
+            </div>
+        </div>
+
+        <div class="row mt-2 justify-content-center">
+            <div class="col-md-4 mt-4 d-flex justify-content-center flex-column">
+                <div class="container">
+                    <h1 class="display-6 mb-2">Introducere</h1>
+                    <p>
+                        <strong class="mb-2 d-block">Haideți să începem cu o definiție simplă!</strong>
+                        Moralitatea se referă la un set de principii, valori și norme care guvernează comportamentul
+                        uman. Aceste principii și norme sunt adesea influențate de factori cum ar fi religia, filozofia,
+                        legile și normele sociale și sunt concepute pentru a reglementa interacțiunile umane și a 
+                        promova bunătatea, justiția și respectul în societate.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Moralitatea în diferite culturi
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Moralitatea</strong> variază semnificativ în diferite culturi, reflectând diversitatea de valori, credințe și tradiții ale diferitelor grupuri umane din întreaga lume. În unele culturi, moralitatea este strâns legată de religie, cu principii etice și comportamentale definite în scripturi sacre sau tradiții spirituale. De exemplu, în unele culturi orientale, cum ar fi cele budiste sau confucianiste, moralitatea este adesea asociată cu concepte precum compasiunea, respectul și armonia socială. În contrast, în culturile occidentale, influențele din filozofie, drept și tradiții seculare au contribuit la dezvoltarea unor perspective etice diverse, care pot pune accentul pe autonomie, drepturile individuale și justiția socială.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Binele și răul
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Conceptele de bine și rău sunt aspecte fundamentale ale eticii și filozofiei morale, iar interpretarea lor poate varia în funcție de context cultural, religios și filozofic. În general, <strong>binele</strong> se referă la acțiuni, valori sau stări care sunt considerate benefice, pozitive sau conforme cu standardele morale sau etice ale unei comunități sau indivizi. Acest concept poate include aspecte precum altruismul, generozitatea, dreptatea, compasiunea și respectul pentru drepturile și demnitatea umană. În schimb, <strong>răul</strong> se referă la acțiuni, valori sau stări care sunt considerate dăunătoare, negative sau contrare standardelor morale sau etice. Acestea pot include aspecte precum violența, egoismul, nedreptatea, intoleranța și lipsa de respect față de ceilalți.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Moralitatea în filozofie
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Mulți filozofi iluștri au investigat și dezbătut problema moralității de-a lungul istoriei filozofiei. Unul dintre cei mai influenți este Socrate, care a fost cunoscut pentru accentul său pe virtute și auto-cunoaștere. Socrate a subliniat importanța vieții examinate și a argumentat că cunoașterea conduce la virtute. Aristotel, un alt filozof grec, a dezvoltat etica virtuții, susținând că omul trebuie să-și dezvolte caracterul și virtuțile pentru a trăi o viață fericită și echilibrată. Un alt gânditor important, Immanuel Kant, a fundamentat etica datoria morală, susținând că acțiunile sunt bune în ele însele numai dacă sunt motivate de respectul pentru legea morală universală.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-5" id="item-2-1" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Despre bine și rău sau despre moralitate</h1>
+            <p>
+                <strong class="text-uppercase">Binele</strong> este valoarea supremă în
+                domeniul moral, înfăptuirea practică a binelui presupunând a urmări 
+                întruparea cât mai deplină a unor valori ca: dreptatea, generozitatea, 
+                curajul, sinceritatea, prietenia etc. La întrebări precum: Ce sunt binele 
+                și răul? Ce înseamnă dreptatea? Ce este curajul? Dar virtutea? Când și 
+                față de cine se cer cultivate prietenia sau intransigenţa?, răspunsurile, 
+                aparent simple, comportă soluții variate şi, uneori, chiar opuse. Frecvent, 
+                astfel de întrebări sunt formulate în legătură cu propriile acțiuni sau 
+                pentru a aprecia faptele altora. Unele situații par neproblematice şi, 
+                spontan, oricine le poate caracteriza ca fiind rele: fapta unei mame care
+                îşi abandonează copilul sau şoferul care părăsește locul accidentului 
+                fără să ajute victima.
+                Există și situații în care este dificil să decidem ce este bine: o mamă
+                care fură pentru a-şi hrăni copiii minori, tatăl ce minte în instanță 
+                apărându-şi fiul care a comis un jaf, elevul care-i suflă un răspuns 
+                colegului său, riscând, astfel, să fie pedepsit.
+            </p>
+            <p>
+                Judecăm moralitatea unei fapte în funcție de consecințe/scop sau pe baza 
+                intenției care a stat la baza ei? Privită în funcție de consecințe 
+                (femeia îşi salvează copiii de la moarte), fapta pare a fi bună; dacă
+                ne raportăm la norma ce recomandă Să nu furi!, fapta este rea.
+                Teoriile etice, indiferent de natura lor, au în centru ideea de bine.
+                Dacă răul (latinescul malum) poate fi și nefericire, atunci binele poate
+                fi echivalentul fericirii? Potrivit mai multor gânditori, răspunsul este
+                pozitiv, dar mulți îşi recunosc neputinţa în a indica o cale spre 
+                atingerea fericirii.
+                Întrebările prezentate mai sus sunt de primă importanță în etică, 
+                iar soluţionarea lor îndeamnă la reflecţie filosofică.
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        Socrate, la fel ca și Platon, afirma că virtutea se învață. Întreaga
+                        problematică morală se va constitui în jurul acestei probleme, unii
+                        gânditori încercând să demonstreze posibilitatea creării unei ştiinţe
+                        ce are ca obiect morala fondată pe principii indubitabile, iar alții 
+                        argumentând că încercarea de a deduce norme de comportament pe baza 
+                        unor principii unice este sortită eșecului.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <strong>J. Locke</strong> (ca și Immanuel Kant, de altfel) susține 
+                        posibilitatea întemeierii moralei ca știință. El consideră că putem 
+                        fundamenta morala pe două premise: existența lui Dumnezeu și ideea de 
+                        om ca ființă rațională. Așa cum teoremele din geometrie pot fi deduse 
+                        din premise evidente, tot așa, dacă suntem imparțiali, putem deduce 
+                        „natura binelui și a răului” și toate normele morale ce ne ghidează 
+                        acțiunea și comportamentul, din premisele menționate anterior.
+                    </p>
+                </div>
+            </div>
+            <p>
+                La polul opus, Fr. Nietzsche consideră că idealurile morale, lipsite de orice
+                fundament transcendent (Dumnezeu a murit), sunt judecăți de valoare, aprecieri
+                care exprimă atitudinea în fața vieții a celor ce le formulează. Astfel, judecata
+                morală nu poate fi revelatoare decât pentru un anumit tip de om, a cărui fiziologie
+                îi explică modul de a fi și, în consecință, valorile.
+                Ierarhia valorilor este un fapt lipsit de legitimitate și de fundament, dar nu ne
+                putem da seama de aceasta decât pornind dinspre fapt spre sursă, analizându-i
+                presupozițiile latente, întreprinzând o genealogie a moralei. Morala este semnul
+                unor anumiți oameni și al unor anumite voințe. Ea încearcă să corecteze viața și
+                s-o transforme, visează la o viață plină de virtute, la o viață care să respingă
+                dorințele și plăcerile simțurilor, la o viață eliberată de corp.
+            </p>
+            <p>
+                Această respingere a vieții reale, în numele unei alte vieți veșnice, se
+                exprimă, în plan religios, prin speranța fericirii eterne în lumea de dincolo
+                , iar în filosofie, prin opoziția dintre lumea aparențelor și cea a esențelor.
+                În opinia lui Nietzsche, atât filosofia, cât și religia resping viața și preferă
+                ceva ce nu există. Acestea prescriu imperative vieții, judecând-o și condamnând-o
+                neîncetat, iar atitudinea lor este nihilistă, de negare a vieții.
+            </p>
+            <p>
+                Omul slab este cel care-și exprimă, prin voință, incapacitatea de a-și putea
+                asuma viața cu toate dimensiunile ei (dorință, violența instinctelor), 
+                mărturisindu-și, prin aceasta, neputința. Libertatea voinței înseamnă
+                libertatea de a acționa. Voința fără putere servește la ascunderea neputinței
+                celui slab. Morala convertește slăbiciunea în forță, convertire ce manifestă
+                secreta dorință a celui slab de a-l domina pe cel puternic. Toate modalitățile
+                prin care s-a încercat convertirea oamenilor la moralitate au fost în esență
+                imorale, conchide Nietzsche.
+                Pascal, la rându-i, afirmă că omul nu e capabil să renunțe la fericire, dar
+                nici nu știe calea pe care să o obțină.
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-2-2" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Morala poate fi demonstrată</h1>
+            <figure>
+                <blockquote class="blockquote fs-6">
+                    <p>
+                        „Ideea unei ființe supreme dotate cu nemărginită putere, bunătate şi inteligenţă, 
+                        care ne-a creat și de care depindem, și ideea despre noi înșine, ca fiinţe inteligente
+                        și raţionale, aceste idei, doar înţelese de mintea noastră, examinate pas cu pas, cum
+                        se cuvine, cred că ne-ar putea furniza fundamentele îndatoririlor noastre și reguli de
+                        conduită care ar putea aşeza morala printre știinţele susceptibile de a fi demonstrate
+                        . Nu mă îndoiesc că, din premise evidente prin ele însele, am putea afla adevărata natură
+                        a binelui și a răului prin deducţii necesare și tot atât de incontestabile ca și cele
+                        matematice, dacă ne-am dedica studiului moralei cu aceeași nepărtinire și atenţie, cum
+                        facem și cu celelalte știinţe. Este sigur că se pot percepe relaţii și în alte moduri,
+                        tot atât de bine ca și cu privire la număr și întindere; și nu văd de ce nu ar fi şi ele
+                        susceptibile de demonstraţie, dacă li s-ar aplica metoda potrivită pentru a examina și
+                        număra acordul sau dezacordul lor. „Unde nu există proprietate, nu există nedreptate”
+                        este o propoziţie tot atât de certă ca orice demonstraţie din Euclid; căci ideea de
+                        proprietate fiind un drept la ceva, iar ideea numită „nedreptate” însemnând cotropirea
+                        și violarea acestui drept, este evident că, aceste idei fiind astfel stabilite și numite,
+                        eu pot cunoaște tot atât de cert că această propoziţie este adevărată, după cum cunosc
+                        că un triunghi are trei unghiuri egale cu două unghiuri drepte.”
+                    </p>
+                </blockquote>
+                <div class="d-flex justify-content-end">
+                    <figcaption class="blockquote-footer">
+                        John Locke - <cite title="Source Title">
+                            (Eseu asupra intelectului omenesc)
+                        </cite>
+                    </figcaption>
+                </div>
+            </figure>
+        </div>
+
+        <hr class="mt-5" id="item-2-3" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Morala ca „negare a vieţii”</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „A te abține reciproc de la practicarea ofensei, a violenței, a jafului, a 
+                            recunoaște voinţa semenului ca fiind egală cu a ta, acestea pot deveni, într-un
+                            sens general, reguli de bună-cuviință între indivizi, în caz că există condițiile
+                            necesare pentru aceasta (şi anume, o reală asemănare a puterilor și a criteriilor
+                            indivizilor, precum şi apartenența lor comună la unul și același corp social). 
+                            Însă, din momentul în care s-ar încerca extinderea acestui principiu, mergându-se
+                            chiar până la considerarea ei ca principiu fundamental al societății, ea s-ar arăta,
+                            pe dată, în adevărata ei lumină: aceea de voinţă de negare a vieţii de principiu al
+                            descompunerii și al decăderii. În acest domeniu, trebuie să pătrundem temeinic până
+                            în străfunduri și să ne stăvilim toate slăbiciunile sentimentale: viaţa însăși este,
+                            în esenţă, sustragere, rănire, biruinţă asupra celui străin și asupra celui mai slab,
+                            oprimare, duritate, impunerea cu forţa a formelor proprii, asimilare sau, cel puţin
+                            și în cel mai blând caz, exploatare - dar la ce bun să întrebuinţăm mereu aceste
+                            cuvinte în care s-a întipărit din vremuri străvechi un sens defăimător? Chiar și
+                            corpul în interiorul căruia, după cum s-a presupus mai sus, indivizii se tratează
+                            ca egali - aceasta se întâmplă în toate aristocraţiile sănătoase -, acest corp este
+                            obligat el însuşi, în caz că e un corp viu și nu unul muribund, să întreprindă,
+                            împotriva celorlalte corpuri, fapte de la care indivizii care îl alcătuiesc se
+                            abţin reciproc; el va trebui să fie întruchiparea voinţei de putere, el va dori
+                            să crească, să se extindă, să acapareze, să dobândească preponderența - și aceasta
+                            nu pe temeiul vreunei moralităţi sau imoralităţi oarecare, ci din cauză că el trăieşte
+                            şi pentru că viața este tocmai voinţă de putere. <em>[...]</em> „Exploatarea” aparţine nu unei
+                            societăţi corupte sau imperfecte și primitive, ea aparţine esenței vieţii, ca funcţiune
+                            organică fundamentală, ea este o consecinţă a voinţei de putere propriu-zise, cea care
+                            e însăși voinţa de a trăi. - Presupunând că, in teorie, acestea ar fi o inovație, în
+                            realitate, ele constituie, de fapt, factorul primordial al întregii istorii: să fim
+                            măcar atât de cinstiţi ca s-o recunoaștem!”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Friedrich Nietzsche - <cite title="Source Title">
+                                (Dincolo de bine și de rău)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-2-4" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Suntem incapabili de a nu dori adevărul şi fericirea</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Neputându-se lecui de moarte, de necazuri, de neştiinţă, oamenii au găsit cu
+                            cale, spre a fi fericiţi, să nu se mai gândească la aceste lucruri – este tot ce
+                            au putut inventa ei, pentru a se mângâia de atâtea rele. <em>[...]</em> Toţi oamenii
+                            doresc să fie fericiţi; toţi, fără excepţie. Oricât de diferite ar fi mijloacele pe
+                            care le întrebuinţează, ei năzuiesc toţi către această ţintă. Ceea ce-l face pe
+                            unul să meargă la război, iar pe altul să nu meargă, este dorinţa în care se află
+                            amândoi, însoţită de vederi diferite. Voinţa nu face niciodată nici cel mai mic
+                            gest decât cu acest scop (al fericirii). Acesta-i, de când lumea, motivul tuturor
+                            acţiunilor omeneşti, chiar al celor ce se omoară sau se spânzură. Şi, cu toate
+                            acestea, de un număr mare de ani, nicicând fără credinţă nimeni n-a ajuns la
+                            acest punct la care toţi tind continuu. Toţi se plâng: principi şi supuşi, nobili
+                            şi oameni de rând, bătrâni şi tineri, tari şi slabi, savanţi şi ignoranţi, sănătoşi
+                            şi bolnavi; din toate ţările, din toate timpurile, de toate vârstele şi condiţiile.
+                            O încercare atât de lungă, atât de continuă şi de uniformă ar trebui să ne
+                            convingă cu adevărat despre neputinţa în care suntem, de a ajunge la fericire
+                            prin sforţările noastre proprii <em>[...]</em>.”
+                        </p>
+                        <p>
+                            „Ceea ce pare straniu la om este faptul că nu există nimic în natură, care să nu fie în
+                            stare de a ţine loc de scop şi în care el să nu caute fericirea <em>[...]</em>. Unii au căutat
+                            fericirea în autoritate, alţii în cercetări şi ştiinţe, alţii în voluptăţi.
+                        </p>
+                        <p>
+                            Aceste trei plăceri pământeşti au format trei secte, iar cei pe care-i numim filosofi
+                            n-au făcut altceva decât să urmeze, în mod efectiv, una dintre ele. Cei ce
+                            s-au apropiat cel mai mult de ele au găsit cu cale că este necesar ca binele
+                            universal, pe care toţi oamenii îl doresc, să nu stea în niciunul dintre lucrurile
+                            particulare ce nu pot fi posedate decât de un singur om şi care, având mai
+                            multe părţi, mai mult întristează pe posesorul lor, din cauza lipsei părţii pe
+                            care acesta nu o are, decât îl mulţumesc prin satisfacţia ce-i procură partea
+                            care-i aparţine. Ei au înţeles că adevăratul bine trebuie să fie în aşa fel, încât
+                            toţi să-l poată poseda în acelaşi timp, fără micşorare şi fără invidie, şi nimeni
+                            să nu-l poată pierde împotriva voinţei sale. Ei au înţeles acest fel de bine, dar
+                            nu l-au putut găsi; şi, în locul unui bine solid şi efectiv, n-au îmbrăţişat decât
+                            imaginea găunoasă a unei virtuţi fantastice. Instinctul ne spune că trebuie
+                            să căutăm fericirea noastră în noi. Pasiunile ne împing în afară, chiar când
+                            lucrurile exterioare prin ele însele nu le stârnesc. Lucrurile din afara noastră
+                            ne ispitesc de multe ori şi ne cheamă când nici nu ne gândim la ele. Aşa că,
+                            filosofii zadarnic vor spune: <em>Reintraţi în voi înşivă; acolo veţi găsi bogăţia</em>
+                                .
+                            Nimeni nu-i va crede. Cei care-i cred sunt cei mai goi şi mai nătărăi. Căci ce
+                            este mai ridicol şi mai în van decât ceea ce spun stoicii?
+                            Ceilalţi spun: <em>Ieşiţi în afară; căutaţi fericirea în divertisment</em>. Şi 
+                            nici asta nu-i adevărat; vin bolile. Războiul lăuntric al raţiunii împotriva pasiunilor a
+                            făcut ca acei care au voit să aibă pacea să se împartă în două secte. Unii au
+                            voit să renunţe la pasiuni şi să devină dumnezei; ceilalţi au voit să renunţe
+                            la raţiune şi să devină vite. Dar nici unii, nici ceilalţi n-au putut-o face; şi
+                            raţiunea rămâne totdeauna în picioare, acuzând nimicnicia şi nedreptatea
+                            pasiunilor care tulbură odihna celor ce li se abandonează; şi pasiunile sunt
+                            totdeauna vii, chiar şi în sufletul care face efortul de a renunţa la ele. <em>[...]</em> În
+                            ceea ce priveşte dovezile, suntem neputincioşi <em>[...]</em>. Căutăm adevărul, dar nu
+                            găsim decât incertitudine. Căutăm fericirea, dar nu găsim decât nefericire şi
+                            mizerie. Suntem incapabili de a nu dori adevărul şi fericirea, însă nu suntem
+                            capabili nici de certitudine, nici de fericire. <em>[...]</em> Fericirea nu e nici în afara
+                            noastră, nici în noi, ci în Dumnezeu, fie că-i din afară, fie că-i din noi.”
+
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Blaise Pascal - <cite title="Source Title">
+                                (Cugetări)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-3-1" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Virtutea - calea spre fericire</h1>
+            <p>
+                Etica greacă are în centru termenii de eudaimonia (fericire) şi arete (virtute), relația dintre
+                fericire şi virtute fiind una foarte complexă. Platon şi Aristotel susţin că oamenii, ca și lucrurile,
+                pot fi posesori ai virtuții, considerată a fi acel ceva în care excelează sau ar trebui să exceleze,
+                în funcție de esența proprie. Pentru Platon, nimeni nu e rău de la natură, ci doar din ignoranță.
+                Viața bună este o viață morală, iar virtutea este suficientă pentru fericire. El respinge ideea
+                că morala şi legile ar fi convenţii; cunoaşterea binelui presupune trecerea dincolo de lumea aparenţelor,
+                pentru a descoperi Binele în sine, care aparţine lumii Formelor Ideale. Virtutea este ştiinţa care ne
+                învață să folosim cu chibzuință anumite însuşiri, care, de altfel, pot fi ori utile, ori dăunătoare.
+                Virtuțile cardinale sunt, din această perspectivă: curajul, cumpătarea, înţelepciunea și dreptatea.
+                Aristotel îl critică pe Platon, considerând că este imposibil să reduci tot ce e bine la o singură
+                formă; în schimb, el consideră că există bine în activitate sau artă, în medicină sau strategie.
+                Binele este acel ceva în vederea căruia se fac toate celelalte: în medicină - sănătatea, în strategie
+                - victoria etc. Acest Bine suprem este fericirea. Fericirea este o activitate a sufletului, conformă
+                cu virtutea. Aristotel distinge, la rându-i, între virtuți raţionale şi virtuți morale. Virtuțile
+                raționale (înţelepciunea, înțelegerea, cumpătarea) se învață, în timp ce virtuţile morale
+                (generozitatea, măsura, bunătatea) se capătă prin obişnuință. Virtuţile morale sunt definite ca o
+                medie rațională între prea mult și prea puțin (calea de mijloc).
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-3-2" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Cunoașterea - <em>mijloc de purificare</em></h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „<strong class="text-uppercase">Socrate</strong> : Numai că ,minunatul meu Simmias, tare
+                            mă tem că, pentru obținerea virtuții, nu acesta este schimbul cel cinstit, să dai plăceri
+                            pentru plăceri, dureri pentru dureri, o teamă pentru altă teamă, una mai mare în schimbul
+                            uneia mai mici, de parcă ar fi vorba de schimbat monede. Cred dimpotrivă că, în schimbul
+                            tuturor acestor lucruri, valoare are doar o singură monedă, și aceea e gândirea. Și cred
+                            că toate, când sunt preţuite astfel, când sunt cumpărate și vândute cu asemenea preț, cu
+                            cunoaștere deci, toate sunt cu adevărat ceea ce sunt: curaj și cumpătare și dreptate,
+                            într-un cuvânt, virtute autentică, fie că se adaugă, fie că lipsește plăceri sau temeri
+                            sau orice altceva de acest fel. Și, dimpotrivă, dacă toate acestea sunt despărțite de
+                            cunoaștere și sunt schimbate numai între ele, una pentru alta, atunci mă tem că nu sunt
+                            decât umbre jucate pe-un perete, iar o asemenea virtute vrednică numai de un sclav și
+                            neavând în ea nimic nici sănătos şi nici adevărat, în realitate, și cumpătarea și dreptatea
+                            și curajul reprezintă fără îndoială, fiecare, rezultatul unei purificări de toate acestea.
+                            Cât despre cunoașterea însăși, ea este, de bună seamă, un mijloc de purificare.”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Platon - <cite title="Source Title">
+                                (Fedon)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-3-3" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Viaţa fericită pare a fi o viaţă conformă virtuţii</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Să ne întoarcem la problematicul bun, ca să arătăm în ce poate consta el. <em>[...]</em> În medicină,
+                            ar putea fi sănătatea, în strategie - victoria, în artă - construcţia ca și în celelalte arte.
+                            <em>[...]</em> Totuși, trebuie să încercăm să lămurim aceasta mai bine, fiindcă scopurile sunt, fără
+                            îndoială, multiple şi câteva dintre ele nu sunt voite decât pentru alte scopuri; de exemplu:
+                            bogăţia, flautul şi, în general, instrumentul; apare atunci evident că nu sunt scopuri finale,
+                            în timp ce Bunul Suprem trebuie să fie un scop final și ceva perfect. <em>[...]</em> Prin scopul final,
+                            în sensul cel mai înalt, înțelegem pe acela care este pentru el însuşi şi nu este dorit
+                            niciodată în vederea altui lucru <em>[...]</em>. O asemenea natură nu pare însă, a aparține decât
+                            <strong class="text-uppercase">Fericirii</strong>. Noi o voim întotdeauna pentru ea însăşi,
+                            niciodată în vederea altui lucru, în timp ce onoarea, plăcerea, înţelegerea și orice altă
+                            virtute sunt dorite, desigur, și pentru ele însele <em>[...]</em>, dar le dorim și în vederea fericirii
+                            <em>[...]</em>. Fericirea, din contră, nu este dorită de nimeni în vederea altor bunuri și, în general,
+                            nu este căutată de nimeni în alt scop. Fericirea trebuie înţeleasă, evident, ca o activitate
+                            care este de dorit pentru ea însăși și nu în vederea uneia dintre acelea care sunt de dorit
+                            numai ca mijloace. În fine, sunt încă de dorit activităţile prin care nu căutăm altceva decât
+                            însăşi acţiunea. Acţiunile virtuoase par să aibă, desigur, acest caracter. Fiindcă o acţiune
+                            frumoasă și în acord cu virtutea este de dorit pentru ea însăşi <em>[...]</em>. Fericirea nu constă,
+                            de aceea, în satisfacţie. Ea nu constă în joc sau glumă. Ar fi contradictoriu ca destinul
+                            nostru final să fie joc sau glumă și ca osteneala sau suferinţa unei vieţi întregi să aibă
+                            ca scop numai jocul. <em>[...]</em> Jocul este un fel de recreaţie și avem nevoie de recreaţie, pentru
+                            că nu putem lucra încontinuu. Dar recreaţia nu este un scop, fiindcă ea este numai în vederea
+                            activităţii. De aceea, viaţa fericită pare a fi o viaţă conformă virtuţii, aceasta este, însă,
+                            o viaţă de muncă serioasă și nu de jocuri vesele.”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Aristotel - <cite title="Source Title">
+                                (Etica nicomahică)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-4-1" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Fericire şi credinţă</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Departe, Doamne, departe de inima servului Tău, care se mărturiseşte Ţie, departe gândul
+                            de a mă socoti fericit când mă bucur de orice bucurie. Căci este o bucurie care nu se acordă
+                            nelegiuiţilor, ci acelora care Te cinstesc pentru dragostea Ta şi a căror bucurie ești Tu
+                            însuți. Și însăși viața fericită constă în faptul de a se bucura la Tine și din cauza Ta.
+                            <em>[...]</em> Așadar, nu este sigur că toți vor să fie fericiți, pentru că aceia care nu vor să se
+                            bucure de Tine, singura viață fericită, nu vor viața fericită. Sau toţi vor acest lucru, dar,
+                            fiindcă «trupul pofteşte împotriva duhului, iar duhul împotriva trupului», ca să nu facă ceea
+                            ce vor, cad în ceea ce pot și sunt mulțumiți cu acest lucru, pentru că lucrul pe care nu-l
+                            pot săvârși nu-l doresc atât de mult cât este destul ca să-l poată face.
+                        </p>
+                        <p>
+                            Căci eu îi întreb pe toți: Oare vor să se bucure mai mult de adevăr sau de minciună? Ei nu
+                            îndrăznesc să spună că vor să se bucure de adevăr, atât cât nu se îndoiesc să spună că vor
+                            să fie fericiți. În adevăr, viața fericită este bucuria de adevăr. Căci aceasta este bucuria
+                            de Tine, «Care ești adevărul», Dumnezeu, luminarea mea, salvarea feței mele, Dumnezeul meu.
+                            Această viață fericită toți o vor, această viață care, singură, este fericită toți o vor,
+                            bucuria de adevăr toți o vor. Am văzut mulți oameni care voiau să înșele pe alții, dar n-am
+                            văzut pe nimeni care să voiască să fie înşelat. Unde, deci, au cunoscut această viață fericită,
+                            dacă nu acolo unde au cunoscut chiar adevărul? Căci ei iubesc chiar adevărul, fiindcă nu vor să
+                            fie înşelați, şi, când iubesc viața fericită, căci nu este altceva decât bucuria de adevăr,
+                            în orice caz iubesc chiar adevărul şi nu l-ar iubi, dacă nu ar fi o oarecare cunoaştere a lui
+                            în memoria lor.
+                        </p>
+                        <p>
+                            Aşadar, de ce se bucură de adevăr? De ce nu sunt fericiți? Pentru că sunt mai puternic ocupați
+                            cu acele lucruri care-i fac mai degrabă nefericiți, decât îi fac fericiți, acel lucru de care-şi
+                            amintesc slab. Și când este slabă lumina la oameni, să meargă, să meargă,
+                            <em>Ca să nu-i cuprindă întunericul</em>."
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Augustin - <cite title="Source Title">
+                                (Confesiuni)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-4-2" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Creştinismul şi valorile vieţii</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Creştinismul a adus din nou în lumină valorile sufletului şi ale dragostei; adică valorile vieţii.
+                            Numai un cercetător superficial poate spune că creştinismul a umilit şi a exaltat moartea. Dimpotrivă,
+                            triumful vieţii este atât de categoric, în mesajul lui Christos, încât şi moartea este mântuită,
+                            şi ea este transfigurată prin speranţa celei de-a doua veniri. Moartea nu mai e acum definitivă.
+                            Ea nu mai e nimicire, evanescenţă, neant, ci un popas de odihnă înaintea Nemuririi. Sensul morţii
+                            e răsturnat. <em>[...]</em>. Simplitatea creştinismului este tocmai această răsturnare de valori; economia
+                            lumii este înlocuită printr-o economie spirituală, în care dreptul trece înaintea bogatului şi
+                            păcătosul pocăit, înaintea dreptului. Tot ce era umilit şi condamnat de către lumea veche este exaltat
+                            şi promovat de către creştinism. Şi această totală răsturnare de valori are un sens dinamic şi vital.
+                            Viaţa iese mai plenară, mai victorioasă din această revoluţie a valorilor. Iisus pătrunde în Moarte
+                            şi o învinge. Lumina despică întunericul şi-l risipeşte. Din această simplă confruntare de contrarii,
+                            reiese întreaga măreţie a Creştinismului. <em>[...]</em> Mesajul creştin se alimentează direct din marea dramă
+                            a existenţei umane. Lupta dintre viaţă şi moarte, dintre lumină şi întuneric – se găseşte intactă în
+                            mesajul creştin. De la Iisus încoace, nu se mai poate vorbi de un triumf definitiv al morţii, de o
+                            instaurare definitivă a întunericului. Moartea nu mai e destin; moartea ajunge, de acum, întâmplare,
+                            fapt. Oamenii mor ca să se odihnească înainte de marea beatitudine a nemuririi. Moartea e prefacere,
+                            palingeneză, drum nou – moartea poate fi orice, în afară de evanescenţa sau de lespedea mormântului antic.”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Mircea Eliade - <cite title="Source Title">
+                                (Sentimentul morţii în creştinism, în Taina Indiei)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-5-1" />
+        <div class="container text-center my-5">
+            <h1 class="display-6 mb-4 text-uppercase">Probleme de etică aplicată</h1>
+            <p class="my-2 lead">În contextul societății moderne și al unei lumi care se îndreaptă cu rapiditate spre virtualizare, problemele de etică aplicată devin din ce în ce mai importante.</p>
+            <div class="row py-4">
+                <div class="col-md-6">
+                    <p>
+                        Odată cu creșterea utilizării internetului și a tehnologiilor digitale, apar întrebări privind confidențialitatea datelor,
+                        libertatea de exprimare online și impactul social al mediilor de comunicare digitale. De asemenea, dezvoltarea
+                        inteligenței artificiale ridică întrebări etice privind autonomia, responsabilitatea și posibilele consecințe
+                        neintenționate ale deciziilor algoritmice.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        În domenii precum medicina și biotehnologia, etica aplicată se confruntă
+                        cu dileme referitoare la drepturile pacienților, îmbunătățirea genetică, ingineria genetică și echitatea accesului
+                        la îngrijire medicală. În plus, schimbările sociale și politice din întreaga lume generează dezbateri etice legate
+                        de justiția socială, drepturile omului, multiculturalism și responsabilitatea morală a indivizilor și a instituțiilor.
+                    </p>
+                </div>
+            </div>
+            <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/images/jpg/computer-security.jpg" class="d-block w-100" alt="Computer Security Image">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/jpg/doctor-tweezers.jpg" class="d-block w-100" alt="Doctor Holding Tweezers">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/images/jpg/london-underground.jpg" class="d-block w-100" alt="London Underground">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <hr class="mt-5" id="item-5-2" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Etica aplicată</h1>
+            <p>
+                Rezolvă teoriile morale toate problemele eticii? Ori de câte ori mă voi afla într-o dilemă, voi găsi
+                oare calea de rezolvare apelând la una dintre aceste teorii? E ușor să mă comport în așa fel încât
+                norma urmată de mine să poată deveni regulă generală? Urmărind anumite scopuri, folosesc cele mai
+                corecte mijloace ?
+            </p>
+            <p>
+                Conștiința morală este una nefericită: chiar dacă fac binele, niciodată nu voi ști dacă am făcut
+                destul. Ar trebui să mă simt vinovat când mănânc, gândindu-mă la cele câteva milioane de oameni
+                care mor de foame? Ce îi răspund unui prieten care îmi mărturisește că și-a mințit părinții pentru
+                a veni la discoteca?
+            </p>
+            <p>
+                În timp, teoriile telefonice și deontologice au fost acuzate de:
+            </p>
+            <div class="container">
+                <p>
+                    <strong>• Universalism nefondat</strong> – pentru că nu țin cont de contextul cultural căruia îi aparțin indivizii,
+                    de codul moral presupus în înfăptuirea unei acțiuni;
+                </p>
+                <p>
+                    <strong>• Caracterul prea abstract și normalitatea principiilor</strong> rezultate printr-un demers strict deductiv;
+                </p>
+                <p>
+                    <strong>• Reducționism</strong>, fiecare teorie concentrându-se asupra unui singur aspect (consecințele sau datoria)
+                    al moralității și neglijându-le pe celelalte;
+                </p>
+                <p>
+                    <strong>• Caracterul impersonal</strong> al argumentării exclusiv raționaliste și ignorarea determinărilor subiective.
+                </p>
+            </div>
+            <p>
+                În replică la teoriile morale, au fost elaborate eticile aplicate, ca demers inductiv care constă în
+                derivarea unor principii din analiza unor fapte concrete sau în determinarea unor principii care
+                guvernează un anumit act sau tip de comportament. Problemele puse în dezbatere din perspectiva
+                acestui tip de etică sunt diverse și numeroase: sărăcia ca problemă globală, eutanasia etica ecologică,
+                avortul, egalitatea dintre sexe, discriminarea și tratamentul preferențial, drepturile animalelor,
+                etica relațiilor de afaceri, politica și problema „mâinilor murdare”, războiul și pacea, clonarea, tehnocrația etc.
+            </p>
+            <p>
+                În analizele contemporane, moralitatea în spațiul public este o problemă abordată din diverse perspective.
+                Mita, corupția, demagogia, discriminarea, favoritismul, manipularea, nerespectarea promisiunilor –
+                toate acestea sunt semnalate constant în mass-media. Cum se explică oare faptul că oameni onești,
+                ajunși în funcții publice, își schimbă comportamentul?
+            </p>
+            <p>
+                O posibilă explicație este formulată de Thomas Nagel*, acesta considerând că există o problemă în ceea ce
+                privește efectele și rolurile funcțiilor publice. Aceste roluri îi creează omului impresia că este „agentul
+                unor vaste forțe impersonale sau slujbașul unor instituții mai presus de orice individ”, cu efect „corupător”.
+                Rolurile deținute în viața publică încurajează eliberare, nejustificată, de restricții morale. Explicația:
+                efectul lor moral a fost deformat prin impunerea unor restricții personale (o persoană publică nu acționează
+                în interes propriu) care compensează lipsa restricțiilor oficiale. Actele capătă un caracter depersonalizat,
+                iar autorii „se ascund în spatele responsabilităților impuse de funcția lor”.
+            </p>
+            <p>
+                C. Noica atrage atenția asupra unui alt aspect al comportamentului public: demagogia,  falsele promisiuni .
+            </p>
+            <p>
+                O problemă etică majoră este determinată de imposibilitatea omului de a stăpâni demonii creației.  Noica,
+                optimist, speră, însă,  într-o înțelepțire a omului prin cumpătul cel bun.
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-5-3" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Cinismul în viața publică</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Pentru a explica diferența dintre viața publică și cea particulară trebuie să revenim la un
+                            fapt menționat anterior: acela că moralitatea publică ar putea fi nederivabilă din cea privată,
+                            nu pentru că ele provin din surse diferite, ci pentru că fiecare dintre ele conține elemente
+                            derivate în mod separat dintr-o sursă comună. <em>[...]</em> Principala mea obiecție se referă la faptul
+                            că nivelul la care cinismul este acceptabil în viața publică (modul în care actorii publici ar
+                            putea fi obligați să-și mânjească mâinile) depinde de trăsăturile morale ale instituțiilor prin
+                            care se desfășoară acțiunea lor.
+                        </p>
+                        <p>
+                            Două tipuri de preocupare determină conținutul moralei: grija pentru ceea ce se va întâmpla și
+                            preocuparea pentru ceea ce faci; în măsura în care principiile comportamentului sunt determinate
+                            de primul tip de preocupare, ele vor fi centrate pe rezultat sau consecvențialiste, cerându-ne
+                            să promovăm cele mai bune rezultate globale: în măsura în care suntem determinați de cel de-al
+                            doilea tip de preocupare,influența consecințelor va fi limitată de anumite restricții asupra
+                            mijloacelor folosite și, de asemenea, de o atenuare a obligației de a urmării  întotdeauna cele
+                            mai bune rezultate. […]. Atunci când aplicăm aceeași concepție duală instituțiilor și activităților
+                            publice, rezultatele sunt diferite, din mai multe motive. Instituțiile publice nu sunt persoane și
+                            nu au vieți particulare și, de obicei, nici rolurile instituționale nu absorb în mod complet viețile
+                            ocupanților lor. Instituțiile publice sunt făcute să servească scopuri mai largi decât cele ale
+                            persoanelor particulare sau ale familiilor lor. Ele tind să realizeze interesele unor mase de oameni
+                            <em>[...]</em>. În plus, acțiunile publice sunt împărțite între mulți actori și subinstituții; există o 
+                            diviziune a muncii atât în executarea, cât și în luarea deciziei. Toate acestea au ca rezultat un
+                            raport diferit între moralitatea rezultatelor și moralitatea acțiunilor. Aceste două tipuri de
+                            constrângeri morale sunt exprimate diferit în viața publică și ambele iau forme impersonale.
+                            Unele dintre aceste restricții asupra mijloacelor, restricții centrate pe agent, se vor aplica
+                            atât acțiunii publice, cât și celei private. Dar unele dintre ele vor fi mai slabe, permițând 
+                            angajarea publică a metodelor coercitive, manipulative sau obstructive, care n-ar fi permise 
+                            indivizilor. <em>[...]</em> Poate că cea mai importantă calitate centrată pe agent a moralității publice
+                            este obligația specială de a trata membrii populației în mod egal. <em>[...]</em>
+                        </p>
+                        <p>
+                            În ceea ce privește rezultatele, moralitatea publică diferă de cea privată prin faptul că le acordă
+                            o mai mare importanță. Este o consecință a slăbirii anumitor constrângeri și permisiuni centrate
+                            pe acțiune <em>[...]</em>.
+                        </p>
+                        <p>
+                            Pe această cale destul de complexă, echilibrul dintre morala orientată spre rezultat
+                            și morala orientată spre acțiune va justifica înființarea instituțiilor publice ai căror
+                            angajați să poată face lucruri care n-ar fi acceptate în viața particulară. Unele dintre
+                            aceste deviații vor fi, evident, consecvențialiste; altele vor exprima într-un alt mod caracterul
+                            impersonal al moralității publice. Nu vor lipsi constrângerile centrate pe acțiune; vor mai exista
+                            restricții asupra mijloacelor, dar aceste restricții pot fi mai slabe în ceea ce privește rezultatele,
+                            decât sunt ele pentru indivizi.
+                        </p>
+                        <p>
+                            S-ar putea spune, de asemenea, că aplicarea separată a acestor constrângeri fundamentale la instituțiile
+                            sociale și la comportamentul individual generează o diviziune morală a muncii între individ și societate,
+                            în care idealurile individuale și cele sociale sunt legate în mod inseparabil. Toleranța impersonală a
+                            moralității publice e făcută să ofere un motiv pentru care individualismul este acceptabil în moralitatea
+                            privată.”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Thomas Nagel - <cite title="Source Title">
+                                (Veșnice întrebări)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-5-4" />
+        <div class="container my-5">
+            <h1 class="display-6 mb-4">Eutanasia sau sinuciderea asistată</h1>
+            <p>
+                <figure>
+                    <blockquote class="blockquote fs-6">
+                        <p>
+                            „Cuvântul <strong>"eutanasie"</strong> s-a format având la origine două cuvinte din limba greacă
+                            - eu si thanatos – semnificând, ad literam, “o moarte bună”, <em>[...]</em>. Eutanasia poate avea trei
+                            forme: voluntară, nevoluntară şi involuntară. <em>[...]</em>
+                        </p>
+                        <p>
+                            Eutanasia poate fi voluntară chiar și în cazul în care persoana nu mai este capabilă să îşi
+                            exprime dorința de a muri în momentul în care i se curmă viața. Se poate considera că o persoană
+                            şi-ar dori să moară dacă s-ar afla într-o situație în care, aflată într-o stare de suferință și
+                            boală incurabilă, în urma unui accident care i-a afectat în mod definitiv facultățile mintale,
+                            nu ar mai putea decide între viață și moarte. Dacă, în momentele de luciditate, persoana respectivă
+                            și-a exprimat dorința de a muri, dacă ar ajunge într-una din situațiile de mai sus, atunci se
+                            consideră că persoana care îi curmă viața în circumstanţele corespunzătoare acționează la cererea
+                            acesteia şi realizează un act de eutanasie voluntară.
+                        </p>
+                        <p>
+                            Eutanasia este nevoluntară în cazul în care persoana a cărei viață este curmată nu poate alege între
+                            viață și moarte în mod independent de exemplu, pentru că suferă de o boală incurabilă sau este vorba
+                            despre un nou-născut cu handicap, sau din cauza unei boli sau a unui accident care au transformat o
+                            persoană aptă într-o persoană incapabilă definitiv, fără ca acea persoană să fi  precizat anterior
+                            dacă ar accepta eutanasia în anumite condiții.
+                        </p>
+                        <p>
+                            Eutanasia este involuntară în cazul în care este aplicată unei persoane care ar fi putut să îşi dea
+                            sau nu consimțământul, dar nu l-a dat - fie pentru că nu i s-a mai cerut, fie pentru că i s-a cerut,
+                            dar nu şi l-a dat, dorindu-și să trăiască. Deși cazurile clare de eutanasie involuntară sunt relativ
+                            rare (de exemplu, când A o împușcă pe B fără ca B să îşi fi dat consimțământul de a fi salvată din
+                            mâinile unui torţionar sadic), s-a afirmat că unele practici medicale acceptate (cum ar fi administrarea
+                            dozelor din ce în ce mai mari de calmante care duc la moartea pacientului sau neaprobarea opririi
+                            tratamentului care menține pacientul în viața) pot să conducă la eutanasie involuntară. <em>[...]</em>
+                        </p>
+                        <p>
+                            Până acum, am definit  “eutanasia“ într-un sens mai flexibil ca “moarte din compasiune", adică A
+                            provoacă moartea lui B, de dragul acestuia. Totuşi, există două modalități prin care A poate realiza
+                            acest lucru: A poate să îl omoare pe B administrându-i, de exemplu, o injecție letală: sau A îl
+                            poate lăsa pe B să moară prin încetarea tratamentului care îl menține în viață. Cazurile care se
+                            încadrează în prima categorie sunt numite cazuri de eutanasie “activă" sau “pozitivă", în timp ce
+                            acelea care sunt incluse în cea de-a doua categorie sunt considerate cazuri de eutanasie “pasivă"
+                            sau “negativă". Toate cele trei forme de eutanasie enumerate anterior - voluntară, nevoluntară şi
+                            involuntară pot să fie ori pasive, ori active.”
+                        </p>
+                    </blockquote>
+                    <div class="d-flex justify-content-end">
+                        <figcaption class="blockquote-footer">
+                            Helga Kuhse - <cite title="Source Title">
+                                (Eutanasia, în Tratat de etică)
+                            </cite>
+                        </figcaption>
+                    </div>
+                </figure>
+            </p>
+        </div>
+
+        <hr class="mt-5" id="item-6" />
+        <div class="container my-5 text-center">
+            <h1 class="display-6 mb-4 text-uppercase">Felicitări!</h1>
+            <p class="my-2 lead">Ai parcurs întregul Ghid Educațional!</p>
+            <div class="text-start">
+                <p>
+                    Cu toate acestea, această călătorie de învățare nu s-a încheiat. În continuare, există nenumărate resurse,
+                    de la opere filozofice clasice până la cercetările și dezbaterile contemporane, care ne pot stimula
+                    gândirea și ne pot ajuta să înțelegem mai profund subiectul moralității. Prin explorarea și angajarea
+                    continuă cu aceste resurse putem rafina perspectivele noastre etice și ne putem dezvolta abilitățile
+                    de a naviga într-o lume complexă și în continuă schimbare cu integritate și responsabilitate morală.
+                </p>
+            </div>
+            
+            <h5>Ești gata să îți încerci cunoștințele?</h5>
+            <a class="btn btn-lg w-75 btn-phthalo-green mt-2" asp-area="" asp-page="/QuizStart">Începe Quiz-ul</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p class="mt-3">Ai găsit ghidul nostru interesant? Lasă-ne un <a asp-area="Identity" asp-page="/Account/Manage/Feedback" class="link-phthalo-green">Feedback</a>!</p>
+            }
+            else
+            {
+                <p class="mt-3">Ai găsit ghidul nostru interesant? Lasă-ne un <a asp-area="Identity" asp-page="/Account/Login" class="link-phthalo-green">Feedback</a>!</p>
+            }
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#guide").removeClass("active");
+            $("#guide").addClass("active");
+        });
+    </script>
+}

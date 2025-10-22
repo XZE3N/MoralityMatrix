@@ -1,0 +1,91 @@
+﻿@page
+@model MoralityMatrix.Areas.Identity.Pages.Account.Manage.AddQuestionsModel
+@{
+    ViewData["Title"] = "Adaugă Întrebări";
+    ViewData["ActivePage"] = ManageNavPages.AddQuestions;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="container">
+        <p>Vă rugăm să completați câmpurile de mai jos pentru a adăuga o întrebare nouă.</p>
+        <form id="add-question-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <span asp-validation-for="Input.QuestionText" class="text-danger"></span>
+            <div class="form-floating">
+                <input asp-for="Input.QuestionText" class="form-control pe-4 mb-2" autocomplete="question-text" placeholder="Întrebare" aria-required="true" />
+                <label asp-for="Input.QuestionText" class="form-label"></label>
+                <i class="fas fa-question position-absolute top-50 end-0 translate-middle-y me-3"></i>
+            </div>
+            <span asp-validation-for="Input.Chapter" class="text-danger"></span>
+            <div class="form-floating">
+                <input asp-for="Input.Chapter" class="form-control pe-4 mb-2" autocomplete="capitol" placeholder="Capitol" aria-required="true" />
+                <label asp-for="Input.Chapter" class="form-label"></label>
+                <i class="fas fa-bookmark position-absolute top-50 end-0 translate-middle-y me-3"></i>
+            </div>
+            <p class="lead mb-2">Opțiuni</p>
+            <p>Asigurați-vă că furnizați patru opțiuni pentru răspuns, iar apoi specificați care dintre acestea este corectă.</p>
+            <span asp-validation-for="Input.CorrectOption" class="text-danger"></span>
+            <div class="container ms-2 mb-2">
+
+                <div class="d-flex flex-row align-items-center">
+                    <div class="form-check">
+                        <input asp-for="Input.CorrectOption" class="form-check-input" type="radio" id="radio0" value="0" checked>
+                    </div>
+                    <div class="w-100 ms-2">
+                        <span asp-validation-for="Input.Option1" class="text-danger"></span>
+                        <div class="form-floating">
+                            <input asp-for="Input.Option1" class="form-control mb-2" autocomplete="optiunea-unu" placeholder="Opțiunea unu" aria-required="true" />
+                            <label asp-for="Input.Option1" class="form-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center">
+                    <div class="form-check">
+                        <input asp-for="Input.CorrectOption" class="form-check-input" type="radio" id="radio1" value="1">
+                    </div>
+                    <div class="w-100 ms-2">
+                        <span asp-validation-for="Input.Option2" class="text-danger"></span>
+                        <div class="form-floating">
+                            <input asp-for="Input.Option2" class="form-control mb-2" autocomplete="optiunea-doi" placeholder="Opțiunea doi" aria-required="true" />
+                            <label asp-for="Input.Option2" class="form-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center">
+                    <div class="form-check">
+                        <input asp-for="Input.CorrectOption" class="form-check-input" type="radio" id="radio2" value="2">
+                    </div>
+                    <div class="w-100 ms-2">
+                        <span asp-validation-for="Input.Option3" class="text-danger"></span>
+                        <div class="form-floating">
+                            <input asp-for="Input.Option3" class="form-control mb-2" autocomplete="optiunea-unu" placeholder="Opțiunea trei" aria-required="true" />
+                            <label asp-for="Input.Option3" class="form-label"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center">
+                    <div class="form-check">
+                        <input asp-for="Input.CorrectOption" class="form-check-input" type="radio" id="radio3" value="3">
+                    </div>
+                    <div class="w-100 ms-2">
+                        <span asp-validation-for="Input.Option4" class="text-danger"></span>
+                        <div class="form-floating">
+                            <input asp-for="Input.Option4" class="form-control mb-2" autocomplete="optiunea-unu" placeholder="Opțiunea patru" aria-required="true" />
+                            <label asp-for="Input.Option4" class="form-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-phthalo-green">Adaugă</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

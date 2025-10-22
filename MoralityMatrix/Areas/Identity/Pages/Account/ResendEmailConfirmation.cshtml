@@ -1,0 +1,30 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Retrimite confirmarea prin email";
+}
+
+<div class="col-md-4 container mb-2 pt-4">
+    <img class="img-fluid" src="@Url.Content("~/images/png/logo-no-background.png")" />
+</div>
+<div class="row">
+    <div class="container col-md-6">
+        <hr />
+        <h1 class="display-6">@ViewData["Title"]</h1>
+        <h2 class="lead">Te rugăm să introduci adresa ta de email.</h2>
+
+        <form method="post">
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="form-floating">
+                <input asp-for="Input.Email" class="form-control" placeholder="Email" aria-required="true" />
+                <label asp-for="Input.Email" class="form-label"></label>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <button type="submit" class="w-100 btn btn-lg btn-phthalo-green">Retrimite</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

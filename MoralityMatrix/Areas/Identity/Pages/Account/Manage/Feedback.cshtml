@@ -1,0 +1,44 @@
+﻿@page
+@model MoralityMatrix.Areas.Identity.Pages.Account.Manage.FeedbackModel
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="container">
+        <p>
+            Te invităm să ne împărtășești experiența ta pentru a ne ajuta să creăm o experiență mai bună pentru
+            toți utilizatorii noștri. Ne dorim să știm părerea ta sinceră și valorăm fiecare opinie pentru a ne
+            îmbunătăți serviciile.
+        </p>
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Username" class="form-control mb-2" disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Email" class="form-control mb-2" disabled />
+                <label asp-for="Email" class="form-label"></label>
+            </div>
+            <span asp-validation-for="Input.Title" class="text-danger"></span>
+            <div class="form-floating">
+                <input asp-for="Input.Title" class="form-control mb-2" placeholder="Titlu"/>
+                <label asp-for="Input.Title" class="form-label"></label>
+            </div>
+            <span asp-validation-for="Input.Text" class="text-danger"></span>
+            <div>
+                <label asp-for="Input.Text" class="form-label">Lasă-ne un feedback:</label>
+                <textarea asp-for="Input.Text" class="form-control mb-2" rows="3" placeholder="Feedback"></textarea>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-phthalo-green">Trimite</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
