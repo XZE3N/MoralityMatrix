@@ -183,9 +183,10 @@ Database/
 
 | Screenshot | Description |
 |-------------|--------------|
-| ![Home](docs/screenshot_home.png) | Landing page overview |
-| ![Quiz](docs/screenshot_quiz.png) | Interactive quiz interface |
-| ![Admin](docs/screenshot_admin.png) | Admin dashboard for question management |
+| <img src="https://i.imgur.com/U1qjbkS.png" alt="Home" width="500px"> | Landing page overview |
+| <img src="https://i.imgur.com/YEOwgIR.png" alt="Home" width="500px"> | Home page illustrations |
+| <img src="https://i.imgur.com/cLwl2J5.png" alt="Guide" width="500px"> | Guide page overview |
+| <img src="https://i.imgur.com/zbIGqYj.png" alt="Login" width="500px"> | Login page |
 
 ---
 
