@@ -19,6 +19,8 @@ The platform provides a structured, interactive way for students to explore mora
 
 It leverages **ASP.NET Core (Razor Pages + MVC)** for the backend, **Bootstrap 5** for responsive UI, and **Microsoft SQL Server** for persistent data management.
 
+👉 Check out the working demo [here](https://moralitymatrix.azurewebsites.net/).
+
 ---
 
 ## ✨ Key Features
